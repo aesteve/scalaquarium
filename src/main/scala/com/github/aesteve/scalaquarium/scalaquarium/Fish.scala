@@ -1,6 +1,6 @@
 package com.github.aesteve.scalaquarium.scalaquarium
 
-abstract case class Fish extends Living {
+abstract class Fish extends Living {
 
 	val name: String
 	val aquarium: Aquarium
@@ -31,7 +31,6 @@ abstract case class Fish extends Living {
 	}
 
 	def eatable(other: Living): Boolean = {
-		other != this
-		// TODO : how to check types ?
+		other != this && other.getClass() != getClass()
 	}
 }
