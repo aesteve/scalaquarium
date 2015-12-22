@@ -1,7 +1,6 @@
 package com.github.aesteve.scalaquarium
 
-import com.github.aesteve.scalaquarium.scalaquarium.Aquarium
-import com.github.aesteve.scalaquarium.scalaquarium.impl.Plant
+import com.github.aesteve.scalaquarium.impl.Plant
 import org.scalatest._
 
 class AquariumSpec extends FlatSpec with Matchers {

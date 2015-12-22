@@ -1,6 +1,6 @@
-package com.github.aesteve.scalaquarium.scalaquarium.diet
+package com.github.aesteve.scalaquarium.diet
 
-import com.github.aesteve.scalaquarium.scalaquarium.{Fish, Living}
+import com.github.aesteve.scalaquarium.{Fish, Living}
 
 trait Carnivorous { self: Fish =>
 

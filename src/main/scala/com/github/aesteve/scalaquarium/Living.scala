@@ -1,4 +1,4 @@
-package com.github.aesteve.scalaquarium.scalaquarium
+package com.github.aesteve.scalaquarium
 
 abstract class Living {
 
@@ -12,7 +12,7 @@ abstract class Living {
 	}
 
 	def dead: Boolean = {
-		return health <= 0 || age > 20
+		health <= 0 || age > 20
 	}
 
 }

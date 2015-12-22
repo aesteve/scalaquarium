@@ -1,4 +1,4 @@
-package com.github.aesteve.scalaquarium.scalaquarium
+package com.github.aesteve.scalaquarium
 
 abstract class Fish extends Living {
 
@@ -14,7 +14,7 @@ abstract class Fish extends Living {
 	}
 
 	def breed(partner: Fish): Fish = {
-		return null // TODO : reproduction traits
+		null // TODO : reproduction traits
 	}
 
 	def ++(): Unit = {
@@ -31,6 +31,6 @@ abstract class Fish extends Living {
 	}
 
 	def eatable(other: Living): Boolean = {
-		other != this && other.getClass() != getClass()
+		other != this && other.getClass != getClass
 	}
 }
