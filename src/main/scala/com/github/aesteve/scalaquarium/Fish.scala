@@ -19,15 +19,11 @@ abstract class Fish extends Living {
 
 	def ++(): Unit = {
 		grow()
-		val other = hunt()
-		if (eatable(other)) {
-			eat(other)
-		}
+		val pray = hunt()
+		if (eatable(pray)) eat(pray)
 		val partner = aquarium.randomFish()
 		val child = breed(partner)
-		if (child != null) {
-			aquarium + child
-		}
+		if (child != null) aquarium + child
 	}
 
 	def eatable(other: Living): Boolean = {
