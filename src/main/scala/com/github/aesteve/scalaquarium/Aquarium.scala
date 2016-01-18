@@ -4,10 +4,14 @@ import com.github.aesteve.scalaquarium.impl.Plant
 
 import scala.util.Random
 
-class Aquarium(var fishes: List[Fish] = List[Fish](), var plants: List[Plant] = List[Plant]()) {
+class Aquarium {
 
-	private val rand = new Random()
+	var fishes = List[Fish]()
+	var plants = List[Plant]()
+
 	val alive = { living: Living => !living.dead }
+
+	def randomMember[A](list: List[A]): A = Random.shuffle(list).head
 
 	def ++(): Unit = {
 		for (living <- livings) { living.++() }
@@ -23,11 +27,11 @@ class Aquarium(var fishes: List[Fish] = List[Fish](), var plants: List[Plant] = 
 	}
 
 	def -(fish: Fish): Unit = {
-		fishes = fishes.filterNot(f => f != fish)
+		fishes = fishes.filterNot(f => f == fish)
 	}
 
 	def -(plant: Plant): Unit = {
-		plants = plants.filterNot(p => p != plant)
+		plants = plants.filterNot(p => p == plant)
 	}
 
 	def livingPlants: List[Plant] = {
@@ -43,16 +47,12 @@ class Aquarium(var fishes: List[Fish] = List[Fish](), var plants: List[Plant] = 
 	}
 
 	def empty: Boolean = {
-		livingPlants.size + livingPlants.size == 0
+		livingPlants.size + livingFishes.size == 0
 	}
 
-	def randomFish(): Fish = {
-		livingFishes(rand.nextInt(livingFishes.size))
-	}
+	def someFish(): Fish = randomMember(livingFishes)
 
-	def randomPlant(): Plant = {
-		livingPlants(rand.nextInt(livingPlants.size))
-	}
+	def somePlant(): Plant = randomMember(livingPlants)
 
 	def cleanUp(): Unit = {
 		plants = livingPlants

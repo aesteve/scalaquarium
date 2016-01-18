@@ -26,7 +26,7 @@ abstract class Fish extends Living {
 		grow()
 		val pray = hunt()
 		if (eatable(pray)) eat(pray)
-		val partner = aquarium.randomFish()
+		val partner = aquarium.someFish()
 		val child = reproduce(partner)
 		if (child != null) aquarium + child
 	}

@@ -5,7 +5,7 @@ import com.github.aesteve.scalaquarium.{Fish, Living}
 trait Carnivorous { self: Fish =>
 
 	def hunt(): Living = {
-		self.aquarium.randomPlant()
+		self.aquarium.somePlant()
 	}
 
 	def eat(other: Living): Unit = {
