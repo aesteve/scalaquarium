@@ -14,7 +14,9 @@ class Aquarium {
 	def randomMember[A](list: List[A]): A = Random.shuffle(list).head
 
 	def ++(): Unit = {
-		for (living <- livings) { living.++() }
+		for (living <- livings) {
+			living ++
+		}
 		cleanUp()
 	}
 

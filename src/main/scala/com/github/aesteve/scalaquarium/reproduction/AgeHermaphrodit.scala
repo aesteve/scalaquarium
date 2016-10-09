@@ -4,11 +4,11 @@ import com.github.aesteve.scalaquarium.Fish
 
 trait AgeHermaphrodit { self: Fish =>
 
-	// TODO
-	def reproduce(partner: Fish): Fish = {
-		if (!viablePartners(self, partner)) return null
-		if (self.sex == partner.sex) return null
-		return self.breed(partner)
+	@Override
+	def reproduce(partner: Fish): Option[Fish] = {
+		if (!goodReproducingConditions(self, partner)) return None
+		if (self.sex == partner.sex) return None
+		Some(self.breed(partner))
 	}
 
 }

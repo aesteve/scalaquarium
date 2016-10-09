@@ -12,7 +12,7 @@ abstract class Fish extends Living {
 
 	def hunt(): Living
 	def eat(other: Living): Unit
-	def reproduce(other: Fish): Fish
+	def reproduce(other: Fish): Option[Fish]
 	def breed(partner: Fish): Fish
 
 	override def grow(): Unit = {
@@ -20,20 +20,22 @@ abstract class Fish extends Living {
 		health -= 2
 	}
 
-	def isHungry(): Boolean = health <= 5
+	def isHungry: Boolean = health <= 5
 
 	def ++(): Unit = {
 		grow()
 		val pray = hunt()
-		if (eatable(pray)) eat(pray)
-		val partner = aquarium.someFish()
-		val child = reproduce(partner)
-		if (child != null) aquarium + child
+		pray match { case isPartner => eat(pray) }
+		reproduce(lover) match {
+			case Some(fish) => aquarium + fish
+			case None => ;
+		}
 	}
 
-	def isPartner(other: Living): Boolean = sameSpecies(this, other)
+	def lover: Fish = aquarium.livingFishes.filter(isPartner).head
 
-	def eatable(other: Living): Boolean = {
-		other != this && !this.isPartner(other)
-	}
+	def isPartner(other: Living): Boolean = other != this && sameSpecies(this, other)
+
+	def eatable(other: Living) = other != this && !sameSpecies(this, other)
+
 }
